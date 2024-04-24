@@ -2,7 +2,7 @@ import ProjectItem from "./ProjectItem";
 
 function ProjectsList() {
   return (
-    <div className='mt-5 grid grid-cols-2 gap-5'>
+    <div className='mt-5 grid grid-cols-2 gap-5 md:grid-cols-3  md:gap-5 xl:grid-cols-4'>
       {projects.map((project) => (
         <ProjectItem project={project} />
       ))}

@@ -10,25 +10,28 @@ import NewTask from "./pages/NewTask";
 import CalendarPage from "./pages/CalendarPage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
+import Layout from "./components/Layout";
 
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<WithBottomNav />}>
-        <Route index element={<HomePage />} />
-        <Route path='projects'>
-          <Route index element={<ProjectsPage />} />
-          <Route path=':projectId' element={<ProjectDetailPage />} />
+      <Route path='/' element={<Layout />}>
+        <Route path='/' element={<WithBottomNav />}>
+          <Route index element={<HomePage />} />
+          <Route path='projects'>
+            <Route index element={<ProjectsPage />} />
+            <Route path=':projectId' element={<ProjectDetailPage />} />
+          </Route>
+          <Route path='calendar' element={<CalendarPage />} />
         </Route>
-        <Route path='calendar' element={<CalendarPage />} />
+        <Route path='/new'>
+          <Route index element={<ActionOptionPage />} />
+          <Route path='task' element={<NewTask />} />
+          <Route path='project' element={<NewProject />} />
+        </Route>
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/register' element={<RegisterPage />} />
       </Route>
-      <Route path='/new'>
-        <Route index element={<ActionOptionPage />} />
-        <Route path='task' element={<NewTask />} />
-        <Route path='project' element={<NewProject />} />
-      </Route>
-      <Route path='/login' element={<LoginPage />} />
-      <Route path='/register' element={<RegisterPage />} />
     </Routes>
   );
 }

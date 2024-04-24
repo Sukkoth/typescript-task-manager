@@ -10,7 +10,7 @@ function LoginPage() {
   return (
     <div className='p-5 relative'>
       <div className='absolute inset-0 auth-page'></div>
-      <div className='absolute inset-0 z-10 left-2 right-2'>
+      <div className='absolute inset-0 z-10 md:right-56 md:left-56 left-2 right-2'>
         <p className='text-3xl font-medium px-4 mt-24'>
           Login to start managing your tasks easily
         </p>

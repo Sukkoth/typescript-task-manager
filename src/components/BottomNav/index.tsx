@@ -9,7 +9,7 @@ function BottomNav() {
   return (
     <div
       id='bottom-nav' //to mark active links
-      className='fixed flex justify-evenly items-center bottom-0 left-0 right-0 py-3 bg-shade-200 border-2 border-shade-300 rounded-[3rem] z-50'
+      className='fixed flex justify-evenly items-center bottom-0 w-full lg:w-[65%] mx-auto py-3 bg-shade-200 border-2 border-shade-300 rounded-[3rem] z-50'
     >
       <Link to='new'>
         <div className='bg-primary size-10 cursor-pointer rounded-full center-all'>
