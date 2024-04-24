@@ -26,7 +26,6 @@
   height: 100dvh;
   background-image: url("/public/images/auth-bg.jpg");
   background-size: cover;
-  filter: brightness(0.3);
 }
 
 .auth-input {

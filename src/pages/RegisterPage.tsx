@@ -8,8 +8,8 @@ function RegisterPage() {
 
   return (
     <div className='p-5 relative'>
-      <div className='absolute inset-0 auth-page'></div>
-      <div className='absolute inset-0 z-10 left-2 right-2 md:right-56 md:left-56'>
+      <div className='absolute inset-0 blur-sm brightness-[0.2] auth-page'></div>
+      <div className='absolute inset-0 z-10 left-2 right-2 md:right-52 md:left-52 lg:left-40 lg:right-40 xl:right-56 xl:left-56'>
         <p className='text-3xl font-medium px-4 mt-24'>
           Create an account to take control of your day
         </p>
