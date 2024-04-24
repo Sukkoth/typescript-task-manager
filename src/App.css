@@ -1,0 +1,38 @@
+.center-all {
+  @apply flex items-center justify-center;
+}
+
+#bottom-nav .active {
+  @apply text-primary;
+}
+
+.app-input {
+  @apply bg-shade-200 p-5 text-xl mt-2 rounded-2xl outline-none focus:ring focus:ring-shade-100 placeholder:text-gray-500;
+}
+
+.app-button {
+  @apply bg-primary w-full py-5 rounded-3xl text-black font-semibold;
+}
+
+.priority-input {
+  @apply bg-shade-200 w-full mt-2 h-16 flex justify-evenly items-center rounded-3xl text-black font-semibold overflow-hidden p-1;
+}
+
+.priority-input .item {
+  @apply h-full w-full center-all cursor-pointer hover:bg-shade-100;
+}
+
+.priority-input .active {
+  @apply bg-primary text-black hover:bg-primary;
+}
+
+.auth-page {
+  height: 100dvh;
+  background-image: url("/public/images/auth-bg.jpg");
+  background-size: cover;
+  filter: brightness(0.3);
+}
+
+.auth-input {
+  @apply bg-transparent border-2 border-white py-3 text-lg rounded-xl mt-2 px-5 outline-none focus:border-primary placeholder:text-gray-400;
+}
