@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
 function NewProject() {
   const navigate = useNavigate();
@@ -55,9 +56,9 @@ function NewProject() {
           </label>
           <input id='deadline' type='date' className='app-input' />
         </div>
-        <div className='pt-24'>
-          <button className='app-button'>Create Project</button>
-        </div>
+        <Button onClick={() => {}} textColor='black' rounded='rounded-3xl'>
+          Create Project
+        </Button>
       </form>
     </div>
   );

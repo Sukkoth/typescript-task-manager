@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import PriorityInput from "../components/PriorityInput";
 import { useState } from "react";
 import { TaskPriority } from "../components/shared/types";
+import Button from "../components/Button";
 
 function NewTask() {
   const [priority, setPriority] = useState<TaskPriority>(TaskPriority.low);
@@ -87,9 +88,10 @@ function NewTask() {
             <option value='project5'>PROJECT 5</option>
           </select>
         </div>
-        <div className='pt-5'>
-          <button className='app-button'>Create Task</button>
-        </div>
+
+        <Button onClick={() => {}} textColor='black' rounded='rounded-3xl'>
+          Create Task
+        </Button>
       </form>
     </div>
   );

@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -34,12 +35,14 @@ function LoginPage() {
             <Link to='/login'>I forgot my password</Link>
           </div>
           <div className='pt-16'>
-            <button
-              className='app-button rounded-3xl bg-gray-500 text-white'
+            <Button
               onClick={() => navigate("/", { replace: true })}
+              textColor='white'
+              rounded='rounded-3xl'
+              backgroundColor='bg-gray-500'
             >
-              Log In
-            </button>
+              Create Task
+            </Button>
           </div>
         </form>
         <div className='left-0 right-0 px-4 flex justify-center items-center mt-10'>

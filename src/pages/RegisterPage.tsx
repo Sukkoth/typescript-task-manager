@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Button from "../components/Button";
 
 function RegisterPage() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -39,7 +40,9 @@ function RegisterPage() {
           </div>
 
           <div className='pt-16'>
-            <button className='app-button rounded-3xl'>Sign up</button>
+            <Button onClick={() => {}} textColor='black' rounded='rounded-3xl'>
+              Sign up
+            </Button>
           </div>
         </form>
         <div className='left-0 right-0 px-4 flex justify-center items-center mt-10'>

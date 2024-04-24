@@ -10,10 +10,6 @@
   @apply bg-shade-200 p-5 text-xl mt-2 rounded-2xl outline-none focus:ring focus:ring-shade-100 placeholder:text-gray-500;
 }
 
-.app-button {
-  @apply bg-primary w-full py-5 rounded-3xl text-black font-semibold;
-}
-
 .priority-input {
   @apply bg-shade-200 w-full mt-2 h-16 flex justify-evenly items-center rounded-3xl text-black font-semibold overflow-hidden p-1;
 }
