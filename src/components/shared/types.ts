@@ -28,9 +28,9 @@ export enum ProjectDetailFilter {
 }
 
 export enum TaskPriority {
-  low = 'LOW',
-  medium = 'MEDIUM',
-  high = 'HIGH',
+  low = "LOW",
+  medium = "MEDIUM",
+  high = "HIGH",
 }
 
 export type User = {
@@ -40,6 +40,11 @@ export type User = {
 
 export type UserRegisteration = {
   name: string;
+  email: string;
+  password: string;
+};
+
+export type UserLogin = {
   email: string;
   password: string;
 };

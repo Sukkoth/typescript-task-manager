@@ -102,5 +102,3 @@ const projects = [
     ],
   },
 ];
-
-console.log(projects);
