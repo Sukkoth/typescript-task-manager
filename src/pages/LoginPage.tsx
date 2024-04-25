@@ -1,10 +1,70 @@
-import { Link, useNavigate } from "react-router-dom";
-import Button from "../components/Button";
+import { Link, useNavigate } from 'react-router-dom';
+import Button from '../components/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { authActions, authSelector } from '../store/slices/auth/authSlice';
+import { SetStateAction, useState } from 'react';
+import { Dispatch } from '@reduxjs/toolkit';
+
+type FormData = {
+  email: string;
+  password: string;
+};
 
 function LoginPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [formData, setFormDate] = useState<FormData>({
+    email: '',
+    password: '',
+  });
+
+  const [errorMessage, setErrorMessage] = useState<null | string>(null);
+  // const { user, token } = useSelector(authSelector);
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    console.log(formData);
+
+    if (
+      isValidFormData(formData, (value) => {
+        setErrorMessage(value);
+      })
+    ) {
+      dispatch(authActions.login(formData));
+    }
+  }
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setFormDate((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
+  }
+
+  function isValidFormData(
+    //replace this with yup
+    formData: FormData,
+    setError: (value: string) => void | null
+  ) {
+    let isValidEmail = true;
+    let isValidPassword = true;
+    const { email, password } = formData;
+    //check email
+    if (email.length < 5 || !email.includes('@') || !email.includes('.')) {
+      isValidEmail = false;
+    }
+
+    //check password
+    if (password.length <= 5) {
+      isValidPassword = false;
+    }
+
+    if (setError !== null) {
+      setError('Form data is incorrect');
+    }
+    return isValidEmail && isValidPassword;
   }
 
   return (
@@ -15,20 +75,29 @@ function LoginPage() {
           Login to start managing your tasks easily
         </p>
         <form onSubmit={handleSubmit} className='mt-10 px-4 space-y-5'>
+          {errorMessage?.length && (
+            <p className='text-red-300'>{errorMessage}</p>
+          )}
           <div className='flex flex-col'>
             <label htmlFor='email'>Email</label>
             <input
+              name='email'
               type='email'
               className='auth-input'
               placeholder='Enter your email'
+              onChange={handleChange}
+              required
             />
           </div>
           <div className='flex flex-col'>
             <label htmlFor='password'>Password</label>
             <input
+              name='password'
               type='password'
               className='auth-input'
               placeholder='Enter your password'
+              onChange={handleChange}
+              required
             />
           </div>
           <div className='text-end pe-2'>
@@ -36,7 +105,7 @@ function LoginPage() {
           </div>
           <div className='pt-16'>
             <Button
-              onClick={() => navigate("/", { replace: true })}
+              onClick={() => {}}
               textColor='white'
               rounded='rounded-3xl'
               backgroundColor='bg-gray-500'
@@ -58,10 +127,10 @@ function LoginPage() {
           </div>
           <div className='text-center mt-10 pe-2'>
             <p>
-              Don't have an account?{" "}
+              Don't have an account?{' '}
               <Link to='/register' className='text-primary font-semibold'>
                 Register
-              </Link>{" "}
+              </Link>{' '}
             </p>
           </div>
         </div>
