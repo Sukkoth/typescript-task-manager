@@ -12,6 +12,7 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import Layout from "./components/Layout";
 import AuthOutlet from "./components/AuthOutlet";
+import MenuPage from "./pages/MenuPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path=':projectId' element={<ProjectDetailPage />} />
             </Route>
             <Route path='calendar' element={<CalendarPage />} />
+            <Route path='menu' element={<MenuPage />} />
           </Route>
           <Route path='/new'>
             <Route index element={<ActionOptionPage />} />

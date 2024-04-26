@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { tokenSelector } from "../store/slices/auth/authSlice";
+import { tokenSelector } from "../features/Auth/authSlice";
 import { Navigate, Outlet } from "react-router-dom";
 
 function AuthOutlet() {
@@ -7,6 +7,7 @@ function AuthOutlet() {
   if (token === null) {
     return <Navigate to='/login' />;
   }
+
   return <Outlet />;
 }
 

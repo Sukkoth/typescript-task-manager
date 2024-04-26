@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  authActions,
   authErrorSelector,
   tokenSelector,
-} from "../../store/slices/auth/authSlice";
+} from "../../features/Auth/authSlice";
 import Helpers from "../../utils/Helpers";
 import Button from "../Button";
+import { loginThunk } from "../../features/Auth/authThunks";
+import { StateDispatchType } from "../../store/store";
 
 function LoginForm() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<StateDispatchType>();
   const [formData, setFormDate] = useState({
     email: "",
     password: "",
@@ -21,14 +22,14 @@ function LoginForm() {
   const token = useSelector(tokenSelector);
   const authErrors = useSelector(authErrorSelector);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (
       Helpers.isValidFormData(formData, (value) => {
         setErrorMessage(value);
       })
     ) {
-      dispatch(authActions.login(formData));
+      dispatch(loginThunk(formData));
     }
   }
 
@@ -84,6 +85,7 @@ function LoginForm() {
       </div>
       <div className='pt-16'>
         <Button
+          type='submit'
           onClick={() => {}}
           textColor='white'
           rounded='rounded-3xl'

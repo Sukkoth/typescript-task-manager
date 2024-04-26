@@ -7,10 +7,11 @@ type Rounded =
 
 type Props = {
   children: React.ReactNode;
-  textColor: "black" | "white";
+  textColor?: "black" | "white";
   onClick: () => void;
   rounded?: Rounded;
   backgroundColor?: string;
+  type?: "button" | "submit" | "reset";
 };
 function index(props: Props) {
   const baseStyle = "w-full py-5 font-semibold";
@@ -23,12 +24,16 @@ function index(props: Props) {
   const applyStyle: string[] = [
     baseStyle,
     props.rounded || "rounded-3xl",
-    matchTextColor[props.textColor],
+    matchTextColor[props.textColor || "black"],
     props.backgroundColor || "bg-primary",
   ];
 
   return (
-    <button className={applyStyle.join(" ")} onClick={props.onClick}>
+    <button
+      type={props.type || "button"}
+      className={applyStyle.join(" ")}
+      onClick={props.onClick}
+    >
       {props.children}
     </button>
   );

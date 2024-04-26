@@ -1,6 +1,6 @@
 import { BiBell, BiSearch } from "react-icons/bi";
 import { useSelector } from "react-redux";
-import { userSelector } from "../store/slices/auth/authSlice";
+import { userSelector } from "../features/Auth/authSlice";
 
 function HomeNav() {
   const user = useSelector(userSelector);
