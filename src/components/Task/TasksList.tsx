@@ -6,8 +6,9 @@ import EmptyListAlert from "./EmptyListAlert";
 type TasksListPropTypes = {
   header?: string;
   tasks: Task[];
+  projectName?: string;
 };
-function TasksList({ header, tasks }: TasksListPropTypes) {
+function TasksList({ header, tasks, projectName }: TasksListPropTypes) {
   return (
     <div className='flex flex-col gap-5 mt-10'>
       {header && (
@@ -22,7 +23,7 @@ function TasksList({ header, tasks }: TasksListPropTypes) {
         tasks.map((task) => (
           <TaskItem
             task={task}
-            projectTitle={task.projectTitle}
+            projectTitle={projectName || task?.project?.name}
             key={task.id}
           />
         ))

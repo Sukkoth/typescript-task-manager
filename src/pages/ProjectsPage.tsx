@@ -4,7 +4,7 @@ import ProjectsList from "../components/projects_page/projects/ProjectsList";
 
 function ProjectsPage() {
   return (
-    <div className='p-5'>
+    <div className='p-5 w-full'>
       <nav className='flex justify-between text-3xl'>
         <h1 className=' font-medium'>Projects</h1>
         <BiSearch />

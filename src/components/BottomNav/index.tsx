@@ -1,4 +1,4 @@
-import { BiPlus } from "react-icons/bi";
+import { BiHome, BiPlus } from "react-icons/bi";
 import BottomNavItem from "./BottomNavItem";
 import { HiOutlineBriefcase } from "react-icons/hi";
 import { IoCalendarNumberOutline } from "react-icons/io5";
@@ -16,6 +16,7 @@ function BottomNav() {
           <BiPlus color='black' size={25} />
         </div>
       </Link>
+      <BottomNavItem label='Home' icon={<BiHome size={25} />} to='/' />
       <BottomNavItem
         label='Projects'
         icon={<HiOutlineBriefcase size={25} />}

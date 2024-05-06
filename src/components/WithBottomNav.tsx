@@ -3,7 +3,7 @@ import BottomNav from "./BottomNav";
 
 function WithBottomNav() {
   return (
-    <main>
+    <main className='w-full'>
       <Outlet />
       <BottomNav />
     </main>

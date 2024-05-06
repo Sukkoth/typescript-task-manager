@@ -23,3 +23,41 @@ export async function REGISTER_USER(data: UserRegisteration) {
 export async function GET_USER() {
   return await supabase.auth.getUser();
 }
+
+export async function GET_PROJECTS() {
+  const { data: projects, error } = await supabase.from("projects").select(`
+  *, tasks (
+    *
+  )
+`);
+
+  if (error) {
+    throw error;
+  }
+
+  return projects;
+}
+
+export async function GET_PROJECT(id: string) {
+  const { data: project, error } = await supabase
+    .from("projects")
+    .select(" *, tasks(*)")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    throw error;
+  }
+  return project;
+}
+
+export async function GET_TASKS() {
+  const { data: tasks, error } = await supabase
+    .from("tasks")
+    .select("*, project:projects (id, name, status)");
+  if (error) {
+    throw error;
+  }
+
+  return tasks;
+}

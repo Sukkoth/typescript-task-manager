@@ -2,13 +2,18 @@ import { useState } from "react";
 import TopMenuItem from "./TopMenuItem";
 import { ProjectDetailFilter } from "../../shared/types";
 
-function TopMenu() {
+type Props = {
+  onChange?: (value: ProjectDetailFilter) => void;
+};
+
+function TopMenu({ onChange }: Props) {
   const [activeFilter, setActiveFilter] = useState<ProjectDetailFilter>(
     ProjectDetailFilter.tasks
   );
 
   function handleChangeTab(filter: ProjectDetailFilter) {
     setActiveFilter(filter);
+    if (onChange) onChange(filter);
   }
 
   const menus = [
@@ -33,6 +38,7 @@ function TopMenu() {
     <div className='flex justify-between mt-5'>
       {menus.map((menu) => (
         <TopMenuItem
+          key={menu.label}
           label={menu.label}
           active={activeFilter == menu.filter}
           handleChange={() => handleChangeTab(menu.filter)}

@@ -1,8 +1,25 @@
+export type TaskStatus =
+  | "NOT_STARTED"
+  | "IN_PROGRESS"
+  | "ON_HOLD"
+  | "COMPLETED";
+
 export type Task = {
-  id: string;
-  checked: boolean;
-  projectTitle?: string;
+  id: number;
   title: string;
+  status: TaskStatus;
+  deadline?: Date;
+  priority?: string;
+  project_id: number;
+  description: string;
+  estimate_hours?: 12;
+  created_at: Date;
+  updated_at: Date;
+  project?: {
+    name?: string;
+    id?: string;
+    status?: TaskStatus;
+  };
 };
 
 export enum ProjectsFilter {
@@ -13,12 +30,12 @@ export enum ProjectsFilter {
 
 export type Project = {
   id: string;
-  title: string;
+  name: string;
   description?: string;
   emoji?: string;
   color?: string;
   deadline: Date;
-  tasks: Task[];
+  tasks?: Task[];
 };
 
 export enum ProjectDetailFilter {

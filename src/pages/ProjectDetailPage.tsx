@@ -1,33 +1,35 @@
-import Details from "../components/project_detail_page/Details";
 import TopMenu from "../components/project_detail_page/TopMenu";
+import { useParams } from "react-router-dom";
+import { useGetProjectQuery } from "../react_query/queries";
+import Loading from "../components/Loading";
+import Todos from "../components/project_detail_page/Todos";
+import { useState } from "react";
+import { ProjectDetailFilter } from "../components/shared/types";
+import Description from "../components/project_detail_page/Description";
+import Deadlines from "../components/project_detail_page/Deadlines";
 
 function ProjectDetailPage() {
+  const { projectId } = useParams();
+  const project = useGetProjectQuery(projectId);
+  const [tab, setTab] = useState<ProjectDetailFilter>(
+    ProjectDetailFilter.tasks
+  );
+
   return (
     <div className='p-5'>
-      <h1 className=' font-medium text-3xl'>Rig App</h1>
-      <TopMenu />
-      <h3 className='ml-4 mt-10 text-xl font-medium relative before:absolute before:content-[" "] before:size-2 before:bg-orange-500 before:rounded-full before:top-1/2 before:-left-4 before:-translate-y-1/2'>
-        To Do
-      </h3>
-      <Details project={project} />
+      {project.isLoading && <Loading />}
+
+      {!project.isLoading && !project.isError && (
+        <>
+          <h1 className=' font-medium text-3xl'>Rig App</h1>
+          <TopMenu onChange={(val) => setTab(val)} />
+          {tab === ProjectDetailFilter.tasks && <Todos data={project.data} />}
+          {tab === ProjectDetailFilter.description && <Description />}
+          {tab === ProjectDetailFilter.deadlines && <Deadlines />}
+        </>
+      )}
     </div>
   );
 }
 
 export default ProjectDetailPage;
-
-const project = {
-  id: "1",
-  title: "Website Redesign",
-  description: "Redesign company website to improve user experience.",
-  emoji: "🎨",
-  color: "#FF5733",
-  deadline: new Date("2024-06-30"),
-  tasks: [
-    { id: "1", checked: false, title: "Complete design mockups" },
-    { id: "2", checked: true, title: "Develop frontend components" },
-    { id: "3", checked: false, title: "Write API documentation" },
-    { id: "4", checked: true, title: "Test application for bugs" },
-    { id: "5", checked: false, title: "Deploy to production server" },
-  ],
-};
