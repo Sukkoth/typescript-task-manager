@@ -8,7 +8,7 @@ type TaskItemProp = {
 };
 
 function TaskItem({ task, projectTitle }: TaskItemProp) {
-  const [checked, setChecked] = useState<boolean>(task.checked);
+  const [checked, setChecked] = useState<boolean>(task.status === "COMPLETED");
 
   return (
     <div className='flex bg-shade-200 px-5 h-20 items-center gap-7 rounded-xl'>

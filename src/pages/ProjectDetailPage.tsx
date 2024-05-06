@@ -21,9 +21,11 @@ function ProjectDetailPage() {
 
       {!project.isLoading && !project.isError && (
         <>
-          <h1 className=' font-medium text-3xl'>Rig App</h1>
+          <h1 className=' font-medium text-3xl'>
+            {project.data?.name} {project.data?.emoji}
+          </h1>
           <TopMenu onChange={(val) => setTab(val)} />
-          {tab === ProjectDetailFilter.tasks && <Todos data={project.data} />}
+          {tab === ProjectDetailFilter.tasks && <Todos data={project.data!} />}
           {tab === ProjectDetailFilter.description && <Description />}
           {tab === ProjectDetailFilter.deadlines && <Deadlines />}
         </>

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { GET_PROJECT, GET_PROJECTS, GET_TASKS } from "../supabase/services";
-import { Task } from "../components/shared/types";
+import { Project, Task } from "../components/shared/types";
 
 export function useGetProjectsQuery() {
   return useQuery({
@@ -11,7 +11,7 @@ export function useGetProjectsQuery() {
 }
 
 export function useGetProjectQuery(id: string | undefined) {
-  return useQuery({
+  return useQuery<Project>({
     queryKey: ["project", { id }],
     queryFn: () => GET_PROJECT(id || "/"),
   });

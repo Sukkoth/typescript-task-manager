@@ -65,3 +65,5 @@ export type UserLogin = {
   email: string;
   password: string;
 };
+
+export type ColorScheme = "PRIMARY" | "SECONDARY" | "ERROR" | "WARNING";
