@@ -1,5 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { logInUser } from "../../supabase/services";
+import { GET_USER, REGISTER_USER, logInUser } from "../../supabase/services";
+import { UserRegisteration } from "../../components/shared/types";
+import { AuthError, User, UserResponse } from "@supabase/supabase-js";
 
 export const loginThunk = createAsyncThunk(
   "auth/login",
@@ -12,12 +14,39 @@ export const loginThunk = createAsyncThunk(
         credentials.email,
         credentials.password
       );
+      if (error) throw error;
 
-      if (error !== null) {
-        throw error;
-      } else {
-        return data;
+      return data;
+    } catch (error) {
+      return rejectWithValue(error as AuthError);
+    }
+  }
+);
+
+export const registerThunk = createAsyncThunk(
+  "auth/register",
+  async (data: UserRegisteration, { rejectWithValue }) => {
+    try {
+      const response = await REGISTER_USER(data);
+      if (response.error) {
+        throw response.error;
       }
+      return response.data.user as User;
+    } catch (error) {
+      return rejectWithValue(error as AuthError);
+    }
+  }
+);
+
+export const getUserThunk = createAsyncThunk(
+  "auth/get",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response: UserResponse = await GET_USER();
+      if (response.error) {
+        throw response.error;
+      }
+      return response.data.user;
     } catch (error) {
       return rejectWithValue(error);
     }

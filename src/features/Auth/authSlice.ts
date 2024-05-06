@@ -1,15 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store/store";
-import LocalStorage from "../../utils/LocalStorage";
 import { AuthInitialType } from "./_core";
 import { authBuilder } from "./authBuilder";
-
-const localUser = LocalStorage.getLocalAuth();
+import { UserResponse } from "@supabase/supabase-js";
 
 const initialState: AuthInitialType = {
   isLoading: false,
-  user: localUser?.user || null,
-  token: localUser?.token || null,
+  user: null,
+  token: null,
   errors: {},
 };
 
@@ -17,6 +15,19 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    setUser(state, action) {
+      const {
+        data: { user },
+      } = action.payload as UserResponse;
+      if (user?.email && user?.user_metadata?.full_name)
+        state.user = {
+          email: user?.email as string,
+          name: user?.user_metadata?.full_name,
+        };
+    },
+    resetErrors(state) {
+      state.errors = {};
+    },
     logout(state) {
       state.errors = {};
       state.user = null;

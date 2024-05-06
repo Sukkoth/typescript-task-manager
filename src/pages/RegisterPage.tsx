@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
-import Button from "../components/Button";
+import RegisterForm from "../components/Register/RegisterForm";
 
 function RegisterPage() {
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-  }
-
   return (
     <div className='p-5 relative'>
       <div className='absolute inset-0 blur-sm brightness-[0.2] auth-page'></div>
@@ -13,38 +9,9 @@ function RegisterPage() {
         <p className='text-3xl font-medium px-4 mt-24'>
           Create an account to take control of your day
         </p>
-        <form onSubmit={handleSubmit} className='mt-10 px-4 space-y-5'>
-          <div className='flex flex-col'>
-            <label htmlFor='name'>Name</label>
-            <input
-              type='text'
-              className='auth-input'
-              placeholder='Enter your name'
-            />
-          </div>
-          <div className='flex flex-col'>
-            <label htmlFor='email'>Email</label>
-            <input
-              type='email'
-              className='auth-input'
-              placeholder='Enter your email'
-            />
-          </div>
-          <div className='flex flex-col'>
-            <label htmlFor='password'>Password</label>
-            <input
-              type='password'
-              className='auth-input'
-              placeholder='Enter your password'
-            />
-          </div>
-
-          <div className='pt-16'>
-            <Button onClick={() => {}} textColor='black' rounded='rounded-3xl'>
-              Sign up
-            </Button>
-          </div>
-        </form>
+        {/* FORM */}
+        <RegisterForm />
+        {/* FORM */}
         <div className='left-0 right-0 px-4 flex justify-center items-center mt-10'>
           <div className='w-1/3 h-[0.1rem] bg-gray-300'></div>
           <p className='mx-4'>Or Sign up with</p>

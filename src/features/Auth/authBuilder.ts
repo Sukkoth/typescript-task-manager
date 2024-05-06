@@ -1,7 +1,6 @@
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
 import { AuthInitialType } from "./_core";
-import { loginThunk } from "./authThunks";
-import LocalStorage from "../../utils/LocalStorage";
+import { getUserThunk, loginThunk, registerThunk } from "./authThunks";
 import { AuthError } from "@supabase/supabase-js";
 
 export const authBuilder = (
@@ -19,11 +18,6 @@ export const authBuilder = (
       name: action.payload?.user?.user_metadata?.full_name || "",
       email: action.payload?.user?.email as string,
     };
-    state.token = action.payload?.session?.access_token as string;
-    LocalStorage.setItem("auth", {
-      user: state.user,
-      token: state.token,
-    });
   });
   builder.addCase(loginThunk.rejected, (state, action) => {
     const errors = action.payload as AuthError;
@@ -35,4 +29,45 @@ export const authBuilder = (
   });
 
   //REGISTER
+  builder.addCase(registerThunk.pending, (state) => {
+    state.isLoading = true;
+    state.errors = {};
+  });
+
+  builder.addCase(registerThunk.fulfilled, (state, action) => {
+    state.isLoading = false;
+    state.errors = {};
+    state.user = { email: action.payload?.email || "", name: "" };
+  });
+  builder.addCase(registerThunk.rejected, (state, action) => {
+    const errors = action.payload as AuthError;
+    state.isLoading = false;
+    state.errors = {
+      message: errors.message,
+      code: errors.code,
+    };
+  });
+
+  //GET USER
+  builder.addCase(getUserThunk.pending, (state) => {
+    state.isLoading = true;
+    state.errors = {};
+  });
+  builder.addCase(getUserThunk.fulfilled, (state, action) => {
+    state.isLoading = false;
+    state.errors = {};
+    state.user = {
+      name: action.payload?.user_metadata?.full_name || "",
+      email: action.payload?.email as string,
+    };
+  });
+
+  builder.addCase(getUserThunk.rejected, (state, action) => {
+    const errors = action.payload as AuthError;
+    state.isLoading = false;
+    state.errors = {
+      message: errors.message as string,
+      code: errors.code || `${errors.status}`,
+    };
+  });
 };

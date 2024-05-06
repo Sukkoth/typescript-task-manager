@@ -1,7 +1,29 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoginForm from "../components/LoginPage/LoginForm";
+import supabase from "../supabase";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { userSelector } from "../features/Auth/authSlice";
 
 function LoginPage() {
+  const user = useSelector(userSelector);
+  const navigate = useNavigate();
+
+  async function handleGoogleLogin() {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "http://localhost:5173/get",
+      },
+    });
+  }
+
+  useEffect(() => {
+    if (user?.email) {
+      navigate("/");
+    }
+  }, [navigate, user?.email]);
+
   return (
     <div className='p-5 relative'>
       <div className='absolute inset-0 blur-sm brightness-[0.2] auth-page'></div>
@@ -19,7 +41,10 @@ function LoginPage() {
           <hr />
         </div>
         <div className='left-0 right-0 mt-10'>
-          <div className='border border-white rounded-3xl mx-4 py-3 center-all gap-3 cursor-pointer hover:bg-gray-800'>
+          <div
+            onClick={handleGoogleLogin}
+            className='border border-white rounded-3xl mx-4 py-3 center-all gap-3 cursor-pointer hover:bg-gray-800'
+          >
             <img src='/images/google.png' alt='google' className='size-8' />
             <span className='font-medium'>Google</span>
           </div>

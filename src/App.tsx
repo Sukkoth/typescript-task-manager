@@ -1,6 +1,6 @@
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import "./App.css";
 import WithBottomNav from "./components/WithBottomNav";
 import ProjectsPage from "./pages/ProjectsPage";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
@@ -13,6 +13,7 @@ import LoginPage from "./pages/LoginPage";
 import Layout from "./components/Layout";
 import AuthOutlet from "./components/AuthOutlet";
 import MenuPage from "./pages/MenuPage";
+import Test from "./pages/Test";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         </Route>
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
+        <Route path='/get' element={<Test />} />
       </Route>
     </Routes>
   );
