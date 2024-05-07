@@ -10,7 +10,7 @@ function TopMenuItem({ active = false, label, handleChange }: Props) {
       onClick={handleChange}
       className={`${
         active ? "bg-primary text-black" : "bg-shade-200 hover:bg-shade-100"
-      } px-3 py-2 rounded-3xl min-w-28 text-center font-medium text-lg cursor-pointer`}
+      } px-5 md:px-7 py-2 rounded-3xl min-w-28 text-center font-medium text-sm md:text-lg cursor-pointer`}
     >
       {label}
     </div>

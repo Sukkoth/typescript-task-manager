@@ -1,4 +1,8 @@
-import { TaskStatus, UserRegisteration } from "../components/shared/types";
+import {
+  ProjectStatus,
+  TaskStatus,
+  UserRegisteration,
+} from "../components/shared/types";
 import supabase from "./index";
 
 export async function logInUser(email: string, password: string) {
@@ -14,7 +18,7 @@ export async function REGISTER_USER(data: UserRegisteration) {
     email: data.email,
     password: data.password,
     options: {
-      emailRedirectTo: "http://localhost:5173/login", //
+      emailRedirectTo: `${import.meta.env.VITE_APP_URL}/login`,
     },
   });
   return response;
@@ -24,17 +28,17 @@ export async function GET_USER() {
   return await supabase.auth.getUser();
 }
 
-export async function GET_PROJECTS() {
-  const { data: projects, error } = await supabase.from("projects").select(`
-  *, tasks (
-    *
-  )
-`);
+export async function GET_PROJECTS(filters: { status?: ProjectStatus }) {
+  const query = supabase.from("projects").select(`*, tasks (*)`);
+
+  const { data: projects, error } =
+    filters.status !== null
+      ? await query.eq("status", filters.status)
+      : await query;
 
   if (error) {
     throw error;
   }
-
   return projects;
 }
 

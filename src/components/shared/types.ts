@@ -4,6 +4,12 @@ export type TaskStatus =
   | "ON_HOLD"
   | "COMPLETED";
 
+export type ProjectStatus =
+  | "NOT_STARTED"
+  | "IN_PROGRESS"
+  | "ON_HOLD"
+  | "COMPLETED";
+
 export type Task = {
   id: number;
   title: string;
@@ -35,6 +41,7 @@ export type Project = {
   emoji?: string;
   color?: string;
   deadline: Date;
+  status: TaskStatus;
   tasks?: Task[];
 };
 

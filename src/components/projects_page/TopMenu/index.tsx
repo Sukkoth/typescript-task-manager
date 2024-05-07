@@ -1,31 +1,50 @@
 import { useState } from "react";
 import TopMenuItem from "./TopMenuItem";
-import { ProjectsFilter } from "../../shared/types";
+import { ProjectStatus } from "../../shared/types";
+import { useQueryClient } from "@tanstack/react-query";
+import { useSearchParams } from "react-router-dom";
 
 function TopMenu() {
-  const [activeFilter, setActiveFilter] = useState<ProjectsFilter>(
-    ProjectsFilter.all
+  const [searchParams, setSearchParams] = useSearchParams();
+  const queryClient = useQueryClient();
+  const [activeFilter, setActiveFilter] = useState<ProjectStatus | null>(
+    searchParams.get("filter") as ProjectStatus
   );
 
-  function handleChangeTab(filter: ProjectsFilter) {
+  function handleChangeTab(filter: ProjectStatus | null) {
     setActiveFilter(filter);
+    setSearchParams((prevSearchParams) => {
+      filter !== null
+        ? prevSearchParams.set("filter", filter.toString())
+        : prevSearchParams.delete("filter");
+      return prevSearchParams;
+    });
+
+    queryClient.invalidateQueries({
+      queryKey: ["projects", { status: filter }],
+    });
   }
   return (
     <div className='flex justify-between mt-5'>
       <TopMenuItem
         label='All'
-        active={activeFilter == ProjectsFilter.all}
-        handleChange={() => handleChangeTab(ProjectsFilter.all)}
+        active={activeFilter == null}
+        handleChange={() => handleChangeTab(null)}
       />
       <TopMenuItem
-        label='Active'
-        active={activeFilter == ProjectsFilter.active}
-        handleChange={() => handleChangeTab(ProjectsFilter.active)}
+        label='In Progress'
+        active={activeFilter?.toString() === "IN_PROGRESS"}
+        handleChange={() => handleChangeTab("IN_PROGRESS")}
       />
       <TopMenuItem
-        label='Finished'
-        active={activeFilter == ProjectsFilter.finished}
-        handleChange={() => handleChangeTab(ProjectsFilter.finished)}
+        label='Completed'
+        active={activeFilter?.toString() == "COMPLETED"}
+        handleChange={() => handleChangeTab("COMPLETED")}
+      />
+      <TopMenuItem
+        label='On Hold'
+        active={activeFilter === "ON_HOLD"}
+        handleChange={() => handleChangeTab("ON_HOLD")}
       />
     </div>
   );
