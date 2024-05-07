@@ -1,5 +1,6 @@
 import {
   ProjectStatus,
+  TaskForm,
   TaskStatus,
   UserRegisteration,
 } from "../components/shared/types";
@@ -82,6 +83,14 @@ export async function COMPLETE_TASK({
   if (error) {
     throw error;
   }
-
   return task;
+}
+
+export async function CREATE_TASK(task: TaskForm) {
+  const { data, error } = await supabase.from("tasks").insert([task]).select();
+
+  if (error) {
+    throw error;
+  }
+  return data;
 }

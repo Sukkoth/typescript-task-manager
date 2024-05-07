@@ -8,7 +8,7 @@ type Rounded =
 type Props = {
   children: React.ReactNode;
   textColor?: "black" | "white";
-  onClick: () => void;
+  onClick?: () => void;
   rounded?: Rounded;
   backgroundColor?: string;
   type?: "button" | "submit" | "reset";

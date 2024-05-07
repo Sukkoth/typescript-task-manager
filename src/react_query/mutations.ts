@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { COMPLETE_TASK } from "../supabase/services";
+import { COMPLETE_TASK, CREATE_TASK } from "../supabase/services";
 import { useParams } from "react-router-dom";
 
 export function useChangeTaskStatus() {
@@ -7,12 +7,10 @@ export function useChangeTaskStatus() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: COMPLETE_TASK,
-    onSuccess: (data) => {
-      console.log("UPDATED DONE", data);
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["tasks"],
       });
-
       //this happens when you are vieweing project details page
       if (projectId) {
         queryClient.invalidateQueries({
@@ -27,6 +25,15 @@ export function useChangeTaskStatus() {
     },
     onError: (error) => {
       console.log("UPDATE ERROR", error);
+    },
+  });
+}
+
+export function useCreateTask() {
+  return useMutation({
+    mutationFn: CREATE_TASK,
+    onError: (error) => {
+      console.log("🚀 ~ useCreateTask ~ error:", error);
     },
   });
 }

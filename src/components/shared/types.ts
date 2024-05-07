@@ -1,3 +1,6 @@
+import * as yup from "yup";
+import { TASK_SCHEMA } from "../../Schemas/taskSchema";
+
 export type TaskStatus =
   | "NOT_STARTED"
   | "IN_PROGRESS"
@@ -27,6 +30,8 @@ export type Task = {
     status?: TaskStatus;
   };
 };
+
+export type TaskForm = yup.InferType<typeof TASK_SCHEMA>;
 
 export enum ProjectsFilter {
   all,

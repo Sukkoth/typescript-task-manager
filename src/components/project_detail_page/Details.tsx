@@ -10,7 +10,7 @@ function Details({ project }: Props) {
   return (
     <div className='w-full mt-5'>
       <Link
-        to='/new/task'
+        to={`/new/task?projectId=${project.id}`}
         className='flex bg-shade-200 px-5 h-16 items-center gap-7 rounded-xl text-4xl font-bold justify-center hover:bg-shade-100'
       >
         +

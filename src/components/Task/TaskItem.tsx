@@ -8,10 +8,22 @@ type TaskItemProp = {
   projectTitle?: string;
 };
 
+type Priority = "HIGH" | "LOW" | "MEDIUM" | undefined;
+
 function TaskItem({ task, projectTitle }: TaskItemProp) {
   const [checked, setChecked] = useState<boolean>(task.status === "COMPLETED");
 
   const updateTaskStatus = useChangeTaskStatus();
+
+  function setPriorityBg(status: Priority) {
+    return status === "HIGH"
+      ? "bg-red-400"
+      : status === "MEDIUM"
+      ? "bg-yellow-400"
+      : status === "LOW"
+      ? "bg-primary text-black"
+      : "";
+  }
 
   return (
     <div className='flex bg-shade-200 px-5 h-20 items-center gap-7 rounded-xl'>
@@ -26,9 +38,18 @@ function TaskItem({ task, projectTitle }: TaskItemProp) {
         }}
         value={checked}
       />
-      <div>
-        <p className='text-sm font-extralight'>{projectTitle}</p>
-        <h4 className={checked ? "line-through" : ""}>{task.title}</h4>
+      <div className='flex justify-between items-center w-full'>
+        <div>
+          <p className='text-sm font-extralight'>{projectTitle}</p>
+          <h4 className={checked ? "line-through" : ""}>{task.title}</h4>
+        </div>
+        <div
+          className={` ${setPriorityBg(
+            task?.priority as Priority
+          )} py-1 px-3 rounded-3xl text-xs sm:text-sm w-fit`}
+        >
+          {task?.priority}
+        </div>
       </div>
     </div>
   );
