@@ -1,4 +1,4 @@
-import { UserRegisteration } from "../components/shared/types";
+import { TaskStatus, UserRegisteration } from "../components/shared/types";
 import supabase from "./index";
 
 export async function logInUser(email: string, password: string) {
@@ -60,4 +60,24 @@ export async function GET_TASKS() {
   }
 
   return tasks;
+}
+
+export async function COMPLETE_TASK({
+  id,
+  value,
+}: {
+  id: string;
+  value: TaskStatus;
+}) {
+  const { data: task, error } = await supabase
+    .from("tasks")
+    .update({ status: value })
+    .eq("id", id)
+    .select();
+
+  if (error) {
+    throw error;
+  }
+
+  return task;
 }

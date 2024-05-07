@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CheckBox from "../CheckBox";
 import { Task } from "../shared/types";
+import { useChangeTaskStatus } from "../../react_query/mutations";
 
 type TaskItemProp = {
   task: Task;
@@ -10,12 +11,18 @@ type TaskItemProp = {
 function TaskItem({ task, projectTitle }: TaskItemProp) {
   const [checked, setChecked] = useState<boolean>(task.status === "COMPLETED");
 
+  const updateTaskStatus = useChangeTaskStatus();
+
   return (
     <div className='flex bg-shade-200 px-5 h-20 items-center gap-7 rounded-xl'>
       <CheckBox
         key={task.id}
         onChange={(val) => {
           setChecked(val);
+          updateTaskStatus.mutate({
+            id: `${task.id}`,
+            value: val ? "COMPLETED" : "IN_PROGRESS",
+          });
         }}
         value={checked}
       />
