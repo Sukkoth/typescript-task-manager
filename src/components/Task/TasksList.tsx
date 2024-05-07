@@ -10,7 +10,7 @@ type TasksListPropTypes = {
 };
 function TasksList({ header, tasks, projectName }: TasksListPropTypes) {
   return (
-    <div className='flex flex-col gap-5 mt-10'>
+    <div className='flex flex-col gap-5 mt-10 mb-32'>
       {header && (
         <div className='flex justify-between items-center'>
           <h2 className='text-2xl'>{header}</h2>
