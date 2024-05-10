@@ -25,7 +25,6 @@ function ProjectItem({ project }: { project: Project }) {
         <h2 className='w-full text-sm break-normal overflow-hidden whitespace-nowrap text-ellipsis lg:text-xl'>
           {project.name}
         </h2>
-        {project.status}
         <p className='text-gray-500 font-light'>{allTasksCount} Tasks</p>
         <div className='relative w-full rounded-2x overflow-hidden'>
           <div className='w-full bg-white h-1'></div>
