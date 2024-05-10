@@ -21,5 +21,10 @@ export const PROJECT_SCHEMA = yup.object().shape({
       "Invalid color format, only HEX allowed"
     ),
   deadline: yup.date().required("Deadline is required"),
-  emoji: yup.string().matches(/[\p{Emoji}]/u, "Invalid emoji"),
+  emoji: yup
+    .string()
+    .matches(
+      /(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/g,
+      "Invalid emoji data"
+    ),
 });

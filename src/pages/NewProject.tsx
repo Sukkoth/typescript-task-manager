@@ -104,23 +104,40 @@ function NewProject() {
             </p>
           )}
         </div>
-        <div className='flex flex-col'>
-          <label htmlFor='color' className='text-xl'>
-            Color
-          </label>
+        <div className='flex gap-10'>
+          <div className='flex flex-col'>
+            <label htmlFor='color' className='text-xl'>
+              Color
+            </label>
+            <input
+              type='color'
+              defaultValue={"#DDFF94"}
+              className='app-input p-2 w-16 h-16 rounded-sm'
+              {...register("color")}
+            />
+            {errors.color?.message && (
+              <p className='text-red-300 mt-2 ml-2 text-sm'>
+                {errors.color?.message || "Incorrect one here"}
+              </p>
+            )}
+          </div>
 
-          <input
-            type='color'
-            defaultValue={"#DDFF94"}
-            className='app-input p-2 w-16 h-16 rounded-sm'
-            {...register("color")}
-          />
-
-          {errors.color?.message && (
-            <p className='text-red-300 mt-2 ml-2 text-sm'>
-              {errors.color?.message || "Incorrect one here"}
-            </p>
-          )}
+          <div className='flex flex-col'>
+            <label htmlFor='color' className='text-xl'>
+              Emoji
+            </label>
+            <input
+              type='text'
+              defaultValue='🚀'
+              className='app-input w-16'
+              {...register("emoji")}
+            />
+            {errors.emoji?.message && (
+              <p className='text-red-300 mt-2 ml-2 text-sm'>
+                {errors.emoji?.message || "Incorrect one here"}
+              </p>
+            )}
+          </div>
         </div>
 
         <Button
