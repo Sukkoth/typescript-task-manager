@@ -1,4 +1,5 @@
 import {
+  Project,
   ProjectForm,
   ProjectStatus,
   TaskForm,
@@ -109,6 +110,20 @@ export async function CREATE_PROJECT(project: {
     throw error;
   }
   return data;
+}
+
+export async function UPDATE_PROJECT(project: Project) {
+  const { data, error } = await supabase
+    .from("projects")
+    .update(project)
+    .eq("id", project.id)
+    .select()
+    .single();
+
+  if (error) {
+    throw error;
+  }
+  return data as Project;
 }
 
 export async function DELETE_PROJECT(project_id: string) {

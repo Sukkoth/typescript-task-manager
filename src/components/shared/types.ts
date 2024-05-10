@@ -47,7 +47,7 @@ export type Project = {
   description?: string;
   emoji?: string;
   color?: string;
-  deadline: Date;
+  deadline: string;
   status: TaskStatus;
   tasks?: Task[];
 };

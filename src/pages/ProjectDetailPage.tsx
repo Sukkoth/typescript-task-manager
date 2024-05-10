@@ -43,7 +43,7 @@ function ProjectDetailPage() {
                 </Modal.Button>
                 <Modal.Content>
                   <div className='w-[50rem]'>
-                    <NewProject />
+                    <NewProject editableProjectId={project.data?.id} />
                   </div>
                 </Modal.Content>
               </Modal>

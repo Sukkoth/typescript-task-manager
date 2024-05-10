@@ -15,12 +15,11 @@ export const PROJECT_SCHEMA = yup.object().shape({
     .transform((_, originalValue) =>
       originalValue.startsWith("#") ? originalValue : rgbToHex(originalValue)
     )
-
     .matches(
       /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/,
       "Invalid color format, only HEX allowed"
     ),
-  deadline: yup.date().required("Deadline is required"),
+  deadline: yup.string().required("Deadline is required"),
   emoji: yup
     .string()
     .matches(

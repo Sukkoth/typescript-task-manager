@@ -4,6 +4,7 @@ import {
   CREATE_PROJECT,
   CREATE_TASK,
   DELETE_PROJECT,
+  UPDATE_PROJECT,
 } from "../supabase/services";
 import { useParams } from "react-router-dom";
 
@@ -40,6 +41,12 @@ export function useCreateTask() {
 export function useCreateProject() {
   return useMutation({
     mutationFn: CREATE_PROJECT,
+  });
+}
+
+export function useUpdateProject() {
+  return useMutation({
+    mutationFn: UPDATE_PROJECT,
   });
 }
 
