@@ -110,3 +110,15 @@ export async function CREATE_PROJECT(project: {
   }
   return data;
 }
+
+export async function DELETE_PROJECT(project_id: string) {
+  const { data, error } = await supabase
+    .from("projects")
+    .delete()
+    .eq("id", project_id);
+
+  if (error) {
+    throw error;
+  }
+  return data;
+}

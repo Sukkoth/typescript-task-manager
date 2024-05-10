@@ -12,8 +12,9 @@ type Props = {
   rounded?: Rounded;
   backgroundColor?: string;
   type?: "button" | "submit" | "reset";
+  className?: string;
 };
-function index(props: Props) {
+function Button(props: Props) {
   const baseStyle = "w-full py-5 font-semibold";
 
   const matchTextColor = {
@@ -26,6 +27,7 @@ function index(props: Props) {
     props.rounded || "rounded-3xl",
     matchTextColor[props.textColor || "black"],
     props.backgroundColor || "bg-primary",
+    props.className || "",
   ];
 
   return (
@@ -39,4 +41,4 @@ function index(props: Props) {
   );
 }
 
-export default index;
+export default Button;
