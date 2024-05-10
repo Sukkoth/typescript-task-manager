@@ -1,5 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { COMPLETE_TASK, CREATE_TASK } from "../supabase/services";
+import {
+  COMPLETE_TASK,
+  CREATE_PROJECT,
+  CREATE_TASK,
+} from "../supabase/services";
 import { useParams } from "react-router-dom";
 
 export function useChangeTaskStatus() {
@@ -23,17 +27,17 @@ export function useChangeTaskStatus() {
         });
       }
     },
-    onError: (error) => {
-      console.log("UPDATE ERROR", error);
-    },
   });
 }
 
 export function useCreateTask() {
   return useMutation({
     mutationFn: CREATE_TASK,
-    onError: (error) => {
-      console.log("🚀 ~ useCreateTask ~ error:", error);
-    },
+  });
+}
+
+export function useCreateProject() {
+  return useMutation({
+    mutationFn: CREATE_PROJECT,
   });
 }

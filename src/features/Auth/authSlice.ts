@@ -21,6 +21,7 @@ const authSlice = createSlice({
       } = action.payload as UserResponse;
       if (user?.email && user?.user_metadata?.full_name)
         state.user = {
+          id: user?.id,
           email: user?.email as string,
           name: user?.user_metadata?.full_name,
         };

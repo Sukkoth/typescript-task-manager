@@ -28,7 +28,6 @@ function NewTask() {
   });
 
   const onSubmitHandler = async (formData: TaskForm) => {
-    console.log(formData);
     try {
       await createTask.mutateAsync(formData);
       reset();
@@ -150,7 +149,7 @@ function NewTask() {
               projects.isError ||
               projects.data.length === 0
             }
-            value={searchParams.get("projectId") || undefined}
+            defaultValue={searchParams.get("projectId") || undefined}
             id='project'
             className='app-input'
             {...register("project_id")}

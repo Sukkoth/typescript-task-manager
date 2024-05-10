@@ -1,4 +1,5 @@
 import {
+  ProjectForm,
   ProjectStatus,
   TaskForm,
   TaskStatus,
@@ -88,6 +89,21 @@ export async function COMPLETE_TASK({
 
 export async function CREATE_TASK(task: TaskForm) {
   const { data, error } = await supabase.from("tasks").insert([task]).select();
+
+  if (error) {
+    throw error;
+  }
+  return data;
+}
+
+export async function CREATE_PROJECT(project: {
+  formData: ProjectForm;
+  user_id: string;
+}) {
+  const { data, error } = await supabase
+    .from("projects")
+    .insert([{ user_id: project.user_id, ...project.formData }])
+    .select();
 
   if (error) {
     throw error;

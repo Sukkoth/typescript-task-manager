@@ -15,6 +15,7 @@ export const authBuilder = (
     state.isLoading = false;
     state.errors = {};
     state.user = {
+      id: action.payload?.user.id,
       name: action.payload?.user?.user_metadata?.full_name || "",
       email: action.payload?.user?.email as string,
     };
@@ -37,7 +38,11 @@ export const authBuilder = (
   builder.addCase(registerThunk.fulfilled, (state, action) => {
     state.isLoading = false;
     state.errors = {};
-    state.user = { email: action.payload?.email || "", name: "" };
+    state.user = {
+      id: action.payload.id,
+      email: action.payload?.email || "",
+      name: "",
+    };
   });
   builder.addCase(registerThunk.rejected, (state, action) => {
     const errors = action.payload as AuthError;
@@ -57,6 +62,7 @@ export const authBuilder = (
     state.isLoading = false;
     state.errors = {};
     state.user = {
+      id: action.payload.id,
       name: action.payload?.user_metadata?.full_name || "",
       email: action.payload?.email as string,
     };

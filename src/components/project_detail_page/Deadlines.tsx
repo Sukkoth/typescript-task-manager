@@ -19,7 +19,7 @@ function Deadlines() {
     return status === "NOT_STARTED"
       ? "bg-red-400"
       : status === "COMPLETED"
-      ? "bg-primary"
+      ? "bg-primary text-black"
       : status === "IN_PROGRESS"
       ? "bg-orange-500"
       : status === "ON_HOLD"

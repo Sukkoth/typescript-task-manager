@@ -1,5 +1,6 @@
 import * as yup from "yup";
 import { TASK_SCHEMA } from "../../Schemas/taskSchema";
+import { PROJECT_SCHEMA } from "../../Schemas/projectSchema";
 
 export type TaskStatus =
   | "NOT_STARTED"
@@ -32,6 +33,7 @@ export type Task = {
 };
 
 export type TaskForm = yup.InferType<typeof TASK_SCHEMA>;
+export type ProjectForm = yup.InferType<typeof PROJECT_SCHEMA>;
 
 export enum ProjectsFilter {
   all,
@@ -63,6 +65,7 @@ export enum TaskPriority {
 }
 
 export type User = {
+  id: string;
   name: string;
   email: string;
 };
