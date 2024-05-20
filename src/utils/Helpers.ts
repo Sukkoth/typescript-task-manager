@@ -29,4 +29,46 @@ export default class Helpers {
   static GenerateToken() {
     return new Date().toISOString();
   }
+
+  static getMaxDays(
+    month: number,
+    year: number
+  ): { number: number; date: string; fullDate: Date }[] {
+    // Create a Date object for the first day of the month
+    const date = new Date(year, month);
+
+    // Create the array of date objects
+    const datesArray: { number: number; date: string; fullDate: Date }[] = [];
+
+    // Get the maximum number of days in the month
+    while (date.getMonth() === month) {
+      const dayNumber = date.getDate();
+      const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
+      datesArray.push({ number: dayNumber, date: dayName, fullDate: date });
+
+      date.setDate(dayNumber + 1);
+    }
+
+    return datesArray;
+  }
+
+  static isSameDate(date1?: Date, date2?: Date): boolean {
+    if (!date1 || !date2) {
+      return false;
+    }
+
+    const result =
+      date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate();
+
+    return result;
+  }
+
+  static getCurrentMonthYear = () => {
+    const today = new Date();
+    const month = (today.getMonth() + 1).toString().padStart(2, "0"); // Months are zero-based
+    const year = today.getFullYear();
+    return `${year}-${month}`;
+  };
 }
