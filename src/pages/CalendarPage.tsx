@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { BiSearch } from "react-icons/bi";
 import Helpers from "../utils/Helpers";
 import { useGetTasks } from "../react_query/queries";
 import Timeline from "../components/calendar/Timeline";
@@ -45,12 +44,11 @@ function CalendarPage() {
     <div className='p-5 w-full'>
       <nav className='flex justify-between text-3xl'>
         <h1 className=' font-medium'>Calendar</h1>
-        <BiSearch />
       </nav>
 
       <input
         type='month'
-        className='app-input'
+        className='mt-7 app-input'
         defaultValue={Helpers.getCurrentMonthYear()}
         onChange={(e) => setSelectedMonth(e.target.value)}
       />
