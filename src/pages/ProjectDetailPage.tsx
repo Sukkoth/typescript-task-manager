@@ -41,7 +41,7 @@ function ProjectDetailPage() {
                 <Modal.Button type='TOGGLER'>
                   <BiEdit className='cursor-pointer hover:scale-110 duration-300 hover:text-primary' />
                 </Modal.Button>
-                <Modal.Content>
+                <Modal.Content title='Update Project'>
                   <div className='w-[50rem]'>
                     <NewProject editableProjectId={project.data?.id} />
                   </div>

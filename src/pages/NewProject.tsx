@@ -101,10 +101,7 @@ function NewProject(props: { editableProjectId?: string }) {
             cancel
           </p>
         )}
-        <h3 className='text-xl'>{`${
-          !projectToUpdate ? "New" : "Update"
-        }  Project`}</h3>
-        <div></div>
+        {!projectToUpdate && <h3 className='text-xl'>New Project</h3>}
       </div>
       <form
         className='mt-10 space-y-8'

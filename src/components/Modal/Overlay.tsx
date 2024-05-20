@@ -5,9 +5,11 @@ import useOutsideClick from "../../hooks/useOutsideClick";
 function Overlay({
   children,
   onClose,
+  title,
 }: {
   children: React.ReactNode;
   onClose: () => void;
+  title?: string;
 }) {
   const { handler } = useOutsideClick(onClose);
 
@@ -17,7 +19,8 @@ function Overlay({
         ref={handler}
         className='bg-shade-300 drop-shadow-2xl max-h-[90dvh] border overflow-y-scroll rounded-2xl border-gray-700 p-6'
       >
-        <div className='flex items-center justify-end text-xl mb-2'>
+        <div className='flex items-center justify-between text-xl mb-2'>
+          <h1 className='text-2xl font-semibold'>{title}</h1>
           <CgClose
             onClick={() => onClose()}
             className='hover:scale-125 duration-200 cursor-pointer hover:text-red-300'
