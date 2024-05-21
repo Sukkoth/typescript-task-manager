@@ -61,7 +61,7 @@ export async function GET_PROJECT(id: string) {
 export async function GET_TASKS() {
   const { data: tasks, error } = await supabase
     .from("tasks")
-    .select("*, project:projects (id, name, status)");
+    .select("*, project:projects (id, name, status, color)");
   if (error) {
     throw error;
   }

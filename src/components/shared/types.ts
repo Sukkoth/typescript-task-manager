@@ -29,6 +29,7 @@ export type Task = {
     name?: string;
     id?: string;
     status?: TaskStatus;
+    color?: string;
   };
 };
 
