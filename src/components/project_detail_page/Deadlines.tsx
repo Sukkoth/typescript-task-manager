@@ -51,7 +51,7 @@ function Deadlines() {
                 style={{
                   borderLeftColor: getProjectColorBg(),
                 }}
-                className={`col-span-2 border-l-8  bg-shade-100 flex p-5 rounded-2xl flex-col`}
+                className={`col-span-2 border-l-8  bg-shade-100 flex p-2 lg:p-5 rounded-2xl flex-col`}
               >
                 <div className='flex justify-between flex-col lg:flex-row gap-3 md:gap-2'>
                   <h1>{task.title}</h1>
@@ -63,9 +63,11 @@ function Deadlines() {
                     {task.status.replace("_", " ")}
                   </div>
                 </div>
-                <p className='flex items-center gap-3 mt-3 text-gray-400'>
-                  <BsClock /> {task.estimate_hours} hrs
-                </p>
+                {task.estimate_hours && (
+                  <p className='flex items-center gap-3 mt-3 text-gray-400'>
+                    <BsClock /> {task.estimate_hours} hrs
+                  </p>
+                )}
               </div>
             </div>
           ))}

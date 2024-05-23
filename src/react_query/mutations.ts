@@ -3,6 +3,7 @@ import {
   COMPLETE_TASK,
   CREATE_PROJECT,
   CREATE_TASK,
+  CREATE_TASKS,
   DELETE_PROJECT,
   UPDATE_PROJECT,
 } from "../supabase/services";
@@ -35,6 +36,12 @@ export function useChangeTaskStatus() {
 export function useCreateTask() {
   return useMutation({
     mutationFn: CREATE_TASK,
+  });
+}
+
+export function useCreateMultipleTasks() {
+  return useMutation({
+    mutationFn: CREATE_TASKS,
   });
 }
 

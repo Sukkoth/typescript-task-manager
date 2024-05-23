@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import {
   authErrorSelector,
+  authSelector,
   tokenSelector,
 } from "../../features/Auth/authSlice";
 import Helpers from "../../utils/Helpers";
@@ -19,6 +20,7 @@ function LoginForm() {
   });
 
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
+  const { isLoading } = useSelector(authSelector);
   const token = useSelector(tokenSelector);
   const authErrors = useSelector(authErrorSelector);
 
@@ -90,8 +92,9 @@ function LoginForm() {
           textColor='white'
           rounded='rounded-3xl'
           backgroundColor='bg-gray-500'
+          className='w-full'
         >
-          Log in
+          {isLoading ? "Logging in . . ." : "Log in"}
         </Button>
       </div>
     </form>

@@ -26,7 +26,7 @@ function TaskItem({ task, projectTitle }: TaskItemProp) {
   }
 
   return (
-    <div className='flex bg-shade-200 px-5 h-20 items-center gap-7 rounded-xl'>
+    <div className='flex bg-shade-200 px-5 items-center gap-7 rounded-xl min-h-20'>
       <CheckBox
         key={task.id}
         onChange={(val) => {
@@ -38,7 +38,7 @@ function TaskItem({ task, projectTitle }: TaskItemProp) {
         }}
         value={checked}
       />
-      <div className='flex justify-between items-center w-full'>
+      <div className='flex justify-between items-center w-full py-2 gap-1'>
         <div>
           <p className='text-sm font-extralight'>{projectTitle}</p>
           <h4 className={checked ? "line-through" : ""}>{task.title}</h4>

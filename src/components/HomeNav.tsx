@@ -17,15 +17,35 @@ function HomeNav() {
 
   return (
     <nav>
-      <p className='text-gray-300'>Mon, May 23</p>
-      <div className='flex justify-between items-center'>
-        <h3 className='text-3xl font-medium'>Hello, {user?.name} 👋</h3>
-        <div className='flex gap-5 text-3xl items-center'>
+      {!showSearch && (
+        <p className='text-gray-300'>
+          {new Date().toLocaleDateString("en-US", {
+            weekday: "short",
+            month: "short",
+            day: "numeric",
+          })}
+        </p>
+      )}
+      <div
+        className={`flex ${
+          showSearch ? "justify-end" : "justify-between"
+        } items-center`}
+      >
+        {!showSearch && (
+          <h3 className='text-3xl font-medium'>
+            Hello, {user?.name.split(" ")[0]} 👋
+          </h3>
+        )}
+        <div
+          className={`flex gap-5 text-3xl items-center  ${
+            showSearch ? "w-full" : ""
+          }`}
+        >
           {showSearch && (
             <input
               ref={focusRef}
               type='text'
-              className='outline-none bg-transparent text-white border-b-shade-200 text-xl border-b-2'
+              className='outline-none bg-transparent text-white border-b-shade-200 text-xl border-b-2 w-full'
             />
           )}
           {!showSearch ? (
@@ -43,7 +63,7 @@ function HomeNav() {
               }}
             />
           )}
-          <BiBell />
+          {!showSearch ? <BiBell /> : ""}
         </div>
       </div>
     </nav>

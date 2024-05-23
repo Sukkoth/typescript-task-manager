@@ -15,7 +15,7 @@ type Props = {
   className?: string;
 };
 function Button(props: Props) {
-  const baseStyle = "w-full py-5 font-semibold";
+  const baseStyle = "px-5 py-4 lg:py-5 font-semibold";
 
   const matchTextColor = {
     black: "text-black",

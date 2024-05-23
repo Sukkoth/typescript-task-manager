@@ -162,7 +162,12 @@ function NewTask() {
           </select>
         </div>
 
-        <Button textColor='black' rounded='rounded-3xl' type='submit'>
+        <Button
+          textColor='black'
+          rounded='rounded-3xl'
+          type='submit'
+          className='w-full'
+        >
           Create Task
         </Button>
       </form>

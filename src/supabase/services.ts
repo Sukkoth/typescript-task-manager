@@ -97,6 +97,15 @@ export async function CREATE_TASK(task: TaskForm) {
   return data;
 }
 
+export async function CREATE_TASKS(tasks: TaskForm[]) {
+  const { data, error } = await supabase.from("tasks").insert(tasks).select();
+
+  if (error) {
+    throw error;
+  }
+  return data;
+}
+
 export async function CREATE_PROJECT(project: {
   formData: ProjectForm;
   user_id: string;

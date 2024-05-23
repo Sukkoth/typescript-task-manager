@@ -12,7 +12,7 @@ function HomePage() {
       <SummaryCards />
       {tasks.isLoading && <Loading />}
       {!tasks.isError && tasks.data && (
-        <TasksList header={"Your Tasks"} tasks={tasks.data} />
+        <TasksList header={"Your Tasks"} tasks={tasks.data} shrinkable={true} />
       )}
     </div>
   );

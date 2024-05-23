@@ -7,7 +7,7 @@
 }
 
 .app-input {
-  @apply bg-shade-200 p-5 text-xl mt-2 rounded-2xl outline-none focus:ring focus:ring-shade-100 placeholder:text-gray-500;
+  @apply bg-shade-200 p-5 text-xl mt-2 rounded-2xl outline-none focus:ring focus:ring-shade-100 placeholder:text-gray-500 w-full;
 }
 
 .priority-input {
@@ -24,7 +24,7 @@
 
 .auth-page {
   height: 100dvh;
-  background-image: url('/images/auth-bg.jpg');
+  background-image: url("/images/auth-bg.jpg");
   background-size: cover;
 }
 

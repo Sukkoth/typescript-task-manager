@@ -25,7 +25,7 @@ function TopMenu() {
     });
   }
   return (
-    <div className='flex justify-between mt-5'>
+    <div className='flex justify-between mt-5 overflow-x-scroll gap-2'>
       <TopMenuItem
         label='All'
         active={activeFilter == null}

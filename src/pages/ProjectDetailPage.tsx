@@ -30,9 +30,9 @@ function ProjectDetailPage() {
 
       {!project.isLoading && !project.isError && (
         <>
-          <div className='flex justify-between items-center mb-16'>
+          <div className='flex justify-between items-center mb-10 gap-5'>
             <div>
-              <h1 className=' font-medium text-3xl'>
+              <h1 className=' font-medium text-xl md:text-3xl'>
                 {project.data?.name} {project.data?.emoji}
               </h1>
             </div>
@@ -42,7 +42,7 @@ function ProjectDetailPage() {
                   <BiEdit className='cursor-pointer hover:scale-110 duration-300 hover:text-primary' />
                 </Modal.Button>
                 <Modal.Content title='Update Project'>
-                  <div className='w-[50rem]'>
+                  <div className=''>
                     <NewProject editableProjectId={project.data?.id} />
                   </div>
                 </Modal.Content>

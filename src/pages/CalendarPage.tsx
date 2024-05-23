@@ -53,7 +53,7 @@ function CalendarPage() {
         onChange={(e) => setSelectedMonth(e.target.value)}
       />
 
-      <div className='mt-5 px-2 flex flex-row overflow-scroll select-none gap-2'>
+      <div className='mt-5 px-2 flex flex-row overflow-x-scroll select-none gap-2'>
         {extractedDates.map((month) => {
           return (
             <div
