@@ -1,6 +1,7 @@
 import * as yup from "yup";
 import { TASK_SCHEMA } from "../../Schemas/taskSchema";
 import { PROJECT_SCHEMA } from "../../Schemas/projectSchema";
+import { FEEDBACK_SCHEMA } from "../../Schemas/feedbackSchema";
 
 export type TaskStatus =
   | "NOT_STARTED"
@@ -69,6 +70,7 @@ export type User = {
   id: string;
   name: string;
   email: string;
+  avatar?: string;
 };
 
 export type UserRegisteration = {
@@ -83,3 +85,6 @@ export type UserLogin = {
 };
 
 export type ColorScheme = "PRIMARY" | "SECONDARY" | "ERROR" | "WARNING";
+
+export type FEEDBACK_TYPE = "GENERAL" | "BUG" | "FEATURE";
+export type FeedbackForm = yup.InferType<typeof FEEDBACK_SCHEMA>;

@@ -26,7 +26,7 @@ function Overlay({
             className='hover:scale-125 duration-200 cursor-pointer hover:text-red-300'
           />
         </div>
-        <div className='overflow-x-auto'>{children}</div>
+        <div className='overflow-x-auto p-2'>{children}</div>
       </div>
     </div>
   );

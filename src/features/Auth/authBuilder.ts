@@ -18,6 +18,9 @@ export const authBuilder = (
       id: action.payload?.user.id,
       name: action.payload?.user?.user_metadata?.full_name || "",
       email: action.payload?.user?.email as string,
+      avatar:
+        action.payload.user?.user_metadata?.picture ||
+        action.payload?.user?.user_metadata?.avatar_url,
     };
   });
   builder.addCase(loginThunk.rejected, (state, action) => {
@@ -65,6 +68,9 @@ export const authBuilder = (
       id: action.payload.id,
       name: action.payload?.user_metadata?.full_name || "",
       email: action.payload?.email as string,
+      avatar:
+        action.payload?.user_metadata?.picture ||
+        action.payload?.user_metadata?.avatar_url,
     };
   });
 

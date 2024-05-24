@@ -64,6 +64,7 @@ export default function Button(props: ButtonProps) {
       children
     ) : (
       <button
+        type='button'
         onClick={() => {
           if (!closeModalOnConfirm === false) {
             toggleModal(false);

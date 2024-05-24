@@ -5,6 +5,7 @@ import {
   CREATE_TASK,
   CREATE_TASKS,
   DELETE_PROJECT,
+  SUBMIT_FEEDBACK,
   UPDATE_PROJECT,
 } from "../supabase/services";
 import { useParams } from "react-router-dom";
@@ -60,5 +61,12 @@ export function useUpdateProject() {
 export function useDeleteProject() {
   return useMutation({
     mutationFn: DELETE_PROJECT,
+  });
+}
+
+export function useCreateFeedback() {
+  return useMutation({
+    mutationFn: SUBMIT_FEEDBACK,
+    mutationKey: ["feedback"],
   });
 }

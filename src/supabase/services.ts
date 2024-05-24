@@ -1,4 +1,5 @@
 import {
+  FeedbackForm,
   Project,
   ProjectForm,
   ProjectStatus,
@@ -140,6 +141,21 @@ export async function DELETE_PROJECT(project_id: string) {
     .from("projects")
     .delete()
     .eq("id", project_id);
+
+  if (error) {
+    throw error;
+  }
+  return data;
+}
+
+export async function SUBMIT_FEEDBACK(feedback: {
+  form: FeedbackForm;
+  user_id: string;
+}) {
+  const { data, error } = await supabase
+    .from("feedbacks")
+    .insert([{ ...feedback.form, user_id: feedback.user_id }])
+    .select();
 
   if (error) {
     throw error;

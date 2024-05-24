@@ -10,7 +10,7 @@ import Deadlines from "../components/project_detail_page/Deadlines";
 import { BiEdit } from "react-icons/bi";
 import Modal from "../components/Modal";
 import NewProject from "./NewProject";
-import ConfirmModal from "../components/project_detail_page/DeleteConfirm";
+import ConfirmModal from "../components/ConfirmModal";
 import { useDeleteProject } from "../react_query/mutations";
 import { toast } from "react-toastify";
 
