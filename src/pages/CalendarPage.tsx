@@ -2,6 +2,13 @@ import { useState } from "react";
 import Helpers from "../utils/Helpers";
 import { useGetTasks } from "../react_query/queries";
 import Timeline from "../components/calendar/Timeline";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+
+//swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import { CgChevronLeft, CgChevronRight } from "react-icons/cg";
 
 function CalendarPage() {
   const [selectedMonth, setSelectedMonth] = useState<string>(
@@ -43,7 +50,7 @@ function CalendarPage() {
   return (
     <div className='p-5 w-full'>
       <nav className='flex justify-between text-3xl'>
-        <h1 className=' font-medium'>Calendar</h1>
+        <h1 className='font-medium'>Calendar</h1>
       </nav>
 
       <input
@@ -53,10 +60,19 @@ function CalendarPage() {
         onChange={(e) => setSelectedMonth(e.target.value)}
       />
 
-      <div className='mt-5 px-2 flex flex-row overflow-x-scroll select-none gap-2'>
+      <Swiper
+        spaceBetween={10}
+        navigation={{
+          nextEl: ".custom-next",
+          prevEl: ".custom-prev",
+        }}
+        slidesPerView='auto'
+        modules={[Navigation]}
+        className='mt-10 px-5 select-none gap-2'
+      >
         {extractedDates.map((month) => {
           return (
-            <div
+            <SwiperSlide
               key={`${month.date}${month.number}`}
               onClick={() => setSelectedDate(month.number)}
               className={` 
@@ -75,16 +91,22 @@ function CalendarPage() {
                  }
               ${
                 selectedDate === month.number ? "bg-white text-black" : ""
-              } min-w-16 p-3 transition-colors text-center duration-300 rounded-2xl cursor-pointer `}
+              } min-w-16 max-w-20 p-3 transition-colors text-center duration-300 rounded-2xl cursor-pointer `}
             >
               <h1 className='font-bold text-xl '>{month.number}</h1>
               <p className='text-gray-500 font-medium'>
                 {month.date.slice(0, 3)}
               </p>
-            </div>
+            </SwiperSlide>
           );
         })}
-      </div>
+        <div className='custom-prev hover:scale-125 duration-200 absolute left-0 top-[22%] text-4xl text-primary z-50 cursor-pointer'>
+          <CgChevronLeft />
+        </div>
+        <div className='custom-next hover:scale-125 duration-200 absolute right-0 top-[22%] text-4xl text-primary z-50 cursor-pointer'>
+          <CgChevronRight />
+        </div>
+      </Swiper>
 
       <div className='mt-20'>
         {!tasks.isLoading && tasks.data && (

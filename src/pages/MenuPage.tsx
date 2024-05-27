@@ -65,9 +65,9 @@ function MenuPage() {
         </div>
       </div>
 
-      <div className='md:w-3/4 mx-auto mt-5 p-5'>
+      <div className='md:w-3/4 mx-auto mt-5 p-5 mb-24'>
         <h4 className='font-semibold'>Explore</h4>
-        <div className='mx-auto mt-5 grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-5'>
+        <div className='mx-auto mt-5 grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 gap-5'>
           <MenuItem text='Settings' icon={<GiSettingsKnobs />} />
           <MenuItem text='Notifications' icon={<BsBell />} />
 
@@ -103,13 +103,11 @@ type MenuItemProp = {
 function MenuItem({ text, icon, onClick }: MenuItemProp) {
   return (
     <div
-      className='bg-shade-200 rounded-xl center-all flex-col gap-2 aspect-square lg:max-w-36 cursor-pointer hover:scale-105 md:hover:scale-110 duration-200'
+      className='bg-shade-200 rounded-xl center-all flex-col gap-2 aspect-square cursor-pointer hover:scale-105 md:hover:scale-110 duration-200'
       onClick={onClick}
     >
-      <span className='text:lg xs:text-2xl sm:text-3xl  text-primary mb-3'>
-        {icon}
-      </span>
-      <p className='font-light text-xs xs:text-sm sm:text-lg'>{text}</p>
+      <span className='text-primary text-2xl xl:text-3xl'>{icon}</span>
+      <p className='font-light text-lg xs:text-sm sm:text-lg'>{text}</p>
     </div>
   );
 }
