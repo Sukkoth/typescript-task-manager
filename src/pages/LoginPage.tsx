@@ -24,11 +24,18 @@ function LoginPage() {
     }
   }, [navigate, user?.email]);
 
+  useEffect(() => {
+    document.documentElement.classList.add("bg-shade-300");
+    return () => {
+      document.documentElement.classList.remove("bg-shade-300");
+    };
+  }, []);
+
   return (
-    <div className='p-5 relative '>
-      <div className='absolute inset-0 blur-sm brightness-[0.2] auth-page border '></div>
-      <div className='absolute inset-0 z-10 md:right-52 md:left-52 left-2 right-2 lg:left-40 lg:right-40 xl:right-56 xl:left-56'>
-        <p className='text-3xl font-medium px-4 mt-20'>
+    <div className='text-white p-5 relative min-h-[100dvh]'>
+      <div className='absolute inset-0 blur-sm brightness-[0.3] auth-page -z-10'></div>
+      <div className='lg:w-[70%] mx-auto'>
+        <p className='text-3xl font-medium px-4 mt:16  md:mt-20'>
           Login to start managing your tasks easily
         </p>
         {/* FORM */}

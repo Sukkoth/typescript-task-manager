@@ -110,6 +110,7 @@ function RegisterForm() {
           onClick={() => {}}
           textColor='black'
           rounded='rounded-3xl'
+          className='w-full'
         >
           Sign up
         </Button>

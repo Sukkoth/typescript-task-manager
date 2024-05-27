@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom";
 import RegisterForm from "../components/Register/RegisterForm";
+import { useEffect } from "react";
 
 function RegisterPage() {
+  useEffect(() => {
+    document.documentElement.classList.add("bg-shade-300");
+    return () => {
+      document.documentElement.classList.remove("bg-shade-300");
+    };
+  }, []);
+
   return (
-    <div className='p-5 relative'>
-      <div className='absolute inset-0 blur-sm brightness-[0.2] auth-page'></div>
-      <div className='absolute inset-0 z-10 left-2 right-2 md:right-52 md:left-52 lg:left-40 lg:right-40 xl:right-56 xl:left-56'>
+    <div className='text-white p-5 relative min-h-[100dvh]'>
+      <div className='absolute inset-0 blur-sm brightness-[0.3] auth-page -z-10'></div>
+      <div className='lg:w-[70%] mx-auto'>
         <p className='text-3xl font-medium px-4 mt-24'>
           Create an account to take control of your day
         </p>
