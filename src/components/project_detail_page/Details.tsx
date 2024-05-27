@@ -11,7 +11,7 @@ function Details({ project }: Props) {
     <div className='w-full mt-5'>
       <Link
         to={`/new/task?projectId=${project.id}`}
-        className='flex bg-shade-200 px-5 h-16 items-center gap-7 rounded-xl text-4xl font-bold justify-center hover:bg-shade-100'
+        className='flex bg-gray-200 hover:bg-gray-300 dark:bg-shade-200 px-5 h-16 items-center gap-7 rounded-xl text-4xl font-bold justify-center dark:hover:bg-shade-100'
       >
         +
       </Link>

@@ -31,7 +31,7 @@ function Timeline({ tasks }: { tasks: Task[] }) {
             style={{
               borderLeftColor: getProjectColorBg(task.project?.color),
             }}
-            className={`col-span-2 border-l-8  bg-shade-100 flex p-2 lg:p-5 rounded-2xl flex-col`}
+            className={`col-span-2 border-l-8 bg-gray-200 dark:text-white dark:bg-shade-100 flex p-2 lg:p-5 rounded-2xl flex-col`}
           >
             <div className='flex justify-between flex-col lg:flex-row gap-3 md:gap-2'>
               <h1>{task.title}</h1>

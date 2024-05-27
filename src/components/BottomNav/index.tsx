@@ -9,11 +9,11 @@ function BottomNav() {
   return (
     <div
       id='bottom-nav' //to mark active links
-      className='fixed flex justify-evenly items-center bottom-0 w-full lg:w-[65%] mx-auto py-3 bg-shade-200 border-2 border-shade-300 rounded-[3rem] z-50'
+      className='fixed flex justify-evenly items-center bottom-0 w-full lg:w-[65%] mx-auto py-3 bg-primary dark:bg-shade-200 border-2 border-secondary dark:border-shade-300 rounded-[3rem] z-50'
     >
       <Link to='new'>
-        <div className='bg-primary size-10 cursor-pointer rounded-full center-all'>
-          <BiPlus color='black' size={25} />
+        <div className='bg-secondary text-white dark:text-black dark:bg-primary size-10 cursor-pointer rounded-full center-all'>
+          <BiPlus size={25} />
         </div>
       </Link>
       <BottomNavItem label='Home' icon={<BiHome size={25} />} to='/' />

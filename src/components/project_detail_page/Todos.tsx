@@ -13,7 +13,7 @@ function Todos({ data }: { data: Project }) {
         </h3>
         <Modal>
           <Modal.Button type='TOGGLER'>
-            <div className='flex border items-center gap-3 px-2 py-2 outline-none rounded-xl bg-secondary hover:ring-4 hover:ring-secondary hover:ring-offset-1 hover:ring-offset-white cursor-pointer'>
+            <div className='flex border border-green-500 dark:border-white items-center gap-3 px-2 py-2 outline-none rounded-xl bg-primary text-black dark:text-white dark:bg-purple-600 hover:ring-4 hover:ring-green-500 dark:hover:ring-purple-600 hover:ring-offset-1 dark:hover:ring-offset-white cursor-pointer'>
               <SiRipple className='cursor-pointer hover:scale-110 duration-300 hover:text-primary text-2xl' />
               <p className='font-mono'>Suggest Tasks (AI)</p>
             </div>

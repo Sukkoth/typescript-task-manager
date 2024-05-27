@@ -7,6 +7,8 @@ import Button from "../Button";
 import { useCreateMultipleTasks } from "../../react_query/mutations";
 import { toast } from "react-toastify";
 import { useModal } from "../Modal";
+import Alert from "../Alert";
+import { FiAlertCircle } from "react-icons/fi";
 
 function Suggest() {
   const { toggleModal } = useModal();
@@ -63,7 +65,13 @@ function Suggest() {
       {isLoading && (
         <h1 className='animate-pulse  font-mono'>Generating tasks . . . </h1>
       )}
-      {isLoading && isError && <h1>{error}</h1>}
+      {!isLoading && isError && (
+        <Alert
+          type='ERROR'
+          text={error.message || "Could not generate tasks"}
+          icon={<FiAlertCircle className='text-xl' />}
+        />
+      )}
       {!isLoading && data?.length ? (
         <>
           <p className='font-mono ms-2 text-sm text-gray-400'>

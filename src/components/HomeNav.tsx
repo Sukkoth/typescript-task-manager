@@ -18,7 +18,7 @@ function HomeNav() {
   return (
     <nav>
       {!showSearch && (
-        <p className='text-gray-300'>
+        <p className='text-gray-400 dark:text-gray-300'>
           {new Date().toLocaleDateString("en-US", {
             weekday: "short",
             month: "short",
@@ -45,11 +45,12 @@ function HomeNav() {
             <input
               ref={focusRef}
               type='text'
-              className='outline-none bg-transparent text-white border-b-shade-200 text-xl border-b-2 w-full'
+              className='outline-none bg-transparent dark:text-white border-b-gray-200 dark:border-b-shade-200 text-xl border-b-2 w-full'
             />
           )}
           {!showSearch ? (
             <BiSearch
+              className='cursor-pointer'
               onClick={(e) => {
                 e.preventDefault();
                 setShowSearch((prev) => !prev);
@@ -57,13 +58,14 @@ function HomeNav() {
             />
           ) : (
             <CgClose
+              className='cursor-pointer'
               onClick={(e) => {
                 e.preventDefault();
                 setShowSearch((prev) => !prev);
               }}
             />
           )}
-          {!showSearch ? <BiBell /> : ""}
+          {!showSearch ? <BiBell className='cursor-pointer' /> : ""}
         </div>
       </div>
     </nav>

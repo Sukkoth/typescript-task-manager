@@ -4,5 +4,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-shade-300 text-white font-dmSans;
+  @apply dark:bg-shade-300 dark:text-white font-dmSans transition-colors duration-200;
 }

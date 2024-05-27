@@ -86,11 +86,13 @@ function CalendarPage() {
                        .toISOString()
                        .split("T")[0]
                    )
-                     ? "border-2 border-primary"
+                     ? "border border-secondary dark:border-primary"
                      : ""
                  }
               ${
-                selectedDate === month.number ? "bg-white text-black" : ""
+                selectedDate === month.number
+                  ? "bg-primary dark:bg-white dark:text-black"
+                  : ""
               } min-w-16 max-w-20 p-3 transition-colors text-center duration-300 rounded-2xl cursor-pointer `}
             >
               <h1 className='font-bold text-xl '>{month.number}</h1>
@@ -100,10 +102,10 @@ function CalendarPage() {
             </SwiperSlide>
           );
         })}
-        <div className='custom-prev hover:scale-125 duration-200 absolute left-0 top-[22%] text-4xl text-primary z-50 cursor-pointer'>
+        <div className='custom-prev hover:scale-125 duration-200 absolute left-0 top-[22%] text-4xl text-secondary dark:text-primary z-50 cursor-pointer'>
           <CgChevronLeft />
         </div>
-        <div className='custom-next hover:scale-125 duration-200 absolute right-0 top-[22%] text-4xl text-primary z-50 cursor-pointer'>
+        <div className='custom-next hover:scale-125 duration-200 absolute right-0 top-[22%] text-4xl text-secondary dark:text-primary z-50 cursor-pointer'>
           <CgChevronRight />
         </div>
       </Swiper>

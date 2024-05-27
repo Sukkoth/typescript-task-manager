@@ -15,7 +15,7 @@ function ProjectItem({ project }: { project: Project }) {
   return (
     <div
       onClick={() => navigate("/projects/" + project.id)}
-      className='bg-shade-100 aspect-square rounded-2xl py-6 px-4 flex flex-col justify-between items-start'
+      className='bg-gray-200 dark:bg-shade-100 aspect-square rounded-2xl py-6 px-4 flex flex-col justify-between items-start hover:scale-105 cursor-pointer shadow-md shadow-gray-100 dark:shadow-gray-500 duration-150'
     >
       <span className={emojiClass} style={{ backgroundColor: project.color }}>
         {project.emoji || "😎"}

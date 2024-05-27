@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "selector",
   theme: {
     extend: {
       screens: {
@@ -10,6 +11,7 @@ export default {
         light: "#FFFFFF",
         primary: "#DDFF94",
         secondary: "#6600CC",
+        "primary-50": "#b8d47d",
         "primary-100": "#b8d47d",
         "primary-200": "#a1ba6a",
         "shade-100": "#414040",

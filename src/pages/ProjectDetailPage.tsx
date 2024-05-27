@@ -39,7 +39,7 @@ function ProjectDetailPage() {
             <div className='flex gap-5 text-3xl items-center'>
               <Modal>
                 <Modal.Button type='TOGGLER'>
-                  <BiEdit className='cursor-pointer hover:scale-110 duration-300 hover:text-primary' />
+                  <BiEdit className='cursor-pointer hover:scale-110 duration-300 hover:text-secondary dark:hover:text-primary' />
                 </Modal.Button>
                 <Modal.Content title='Update Project'>
                   <div className=''>

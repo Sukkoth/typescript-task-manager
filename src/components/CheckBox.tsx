@@ -19,12 +19,12 @@ function CheckBox({ value = false, onChange }: CheckBoxPropTypes) {
   };
 
   const checkedStyle = "border border-primary bg-primary";
-  const defaultStyle = "border border-white bg-transparent";
+  const defaultStyle = "border border-black dark:border-white bg-transparent";
 
   return (
     <div
       onClick={handleClick}
-      className={`size-6 center-all rounded-full ${
+      className={`size-6 cursor-pointer center-all rounded-full ${
         checked ? checkedStyle : defaultStyle
       }`}
     >

@@ -45,7 +45,7 @@ export default function Button(props: ButtonProps) {
     ) : (
       <button
         onClick={() => toggleModal(false)}
-        className='px-5 py-2 outline-none rounded-xl bg-shade-100 cursor-pointer hover:ring-4 hover:ring-shade-100 hover:ring-offset-1 hover:ring-offset-white'
+        className='px-5 py-2 outline-none rounded-xl bg-shade-100 cursor-pointer hover:ring-4 hover:ring-shade-100 hover:ring-offset-1 hover:ring-offset-white text-white'
       >
         {text}
       </button>
@@ -71,7 +71,7 @@ export default function Button(props: ButtonProps) {
           }
           onConfirm();
         }}
-        className='px-5 py-2 outline-none rounded-xl bg-secondary hover:ring-4 hover:ring-secondary hover:ring-offset-1 hover:ring-offset-white cursor-pointer'
+        className='px-5 py-2 outline-none rounded-xl bg-secondary hover:ring-4 hover:ring-secondary hover:ring-offset-1 hover:ring-offset-white cursor-pointer text-white'
       >
         {text}
       </button>

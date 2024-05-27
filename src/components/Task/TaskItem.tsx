@@ -26,7 +26,7 @@ function TaskItem({ task, projectTitle }: TaskItemProp) {
   }
 
   return (
-    <div className='flex bg-shade-200 px-5 items-center gap-7 rounded-xl min-h-20'>
+    <div className='flex bg-gray-200 dark:bg-shade-200 px-5 items-center gap-7 rounded-xl min-h-20'>
       <CheckBox
         key={task.id}
         onChange={(val) => {

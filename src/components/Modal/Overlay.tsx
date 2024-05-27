@@ -17,7 +17,7 @@ function Overlay({
     <div className='fixed inset-0 backdrop-blur-lg center-all z-50'>
       <div
         ref={handler}
-        className='bg-shade-300 drop-shadow-2xl max-h-[90dvh] border rounded-2xl border-gray-700 p-6  w-11/12 lg:w-[70%] xl:w-[50%] overflow-y-auto'
+        className='bg-white dark:bg-shade-300 drop-shadow-2xl max-h-[90dvh] border rounded-2xl border-gray-700 p-6  w-11/12 lg:w-[70%] xl:w-[50%] overflow-y-auto'
       >
         <div className='flex items-center justify-between text-xl mb-6'>
           <h1 className='text-2xl font-semibold'>{title}</h1>

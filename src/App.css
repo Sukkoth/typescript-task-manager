@@ -3,11 +3,11 @@
 }
 
 #bottom-nav .active {
-  @apply text-primary;
+  @apply dark:text-primary text-secondary;
 }
 
 .app-input {
-  @apply bg-shade-200 p-5 md:text-xl mt-2 rounded-2xl outline-none focus:ring focus:ring-shade-100 placeholder:text-gray-500 w-full;
+  @apply border border-gray-400 dark:border-shade-200 dark:bg-shade-200 p-5 md:text-xl mt-2 rounded-2xl outline-none focus:ring focus:ring-gray-400 dark:focus:ring-shade-100 placeholder:text-gray-500 w-full;
 }
 
 .app-label {
@@ -15,11 +15,19 @@
 }
 
 .priority-input {
-  @apply bg-shade-200 w-full mt-2 h-16 flex justify-evenly items-center rounded-3xl text-black font-semibold overflow-hidden p-1;
+  @apply bg-gray-100 dark:bg-shade-200 w-full mt-2 h-16 flex justify-evenly items-center rounded-3xl font-semibold overflow-hidden p-1;
 }
 
 .priority-input .item {
-  @apply h-full w-full center-all cursor-pointer hover:bg-shade-100;
+  @apply h-full w-full text-black dark:text-white center-all cursor-pointer hover:bg-gray-300 dark:hover:bg-shade-100;
+}
+
+.priority-input .item:first-child {
+  @apply rounded-l-3xl;
+}
+
+.priority-input .item:last-child {
+  @apply rounded-r-3xl;
 }
 
 .priority-input .active {
