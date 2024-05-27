@@ -7,7 +7,11 @@
 }
 
 .app-input {
-  @apply bg-shade-200 p-5 text-xl mt-2 rounded-2xl outline-none focus:ring focus:ring-shade-100 placeholder:text-gray-500 w-full;
+  @apply bg-shade-200 p-5 md:text-xl mt-2 rounded-2xl outline-none focus:ring focus:ring-shade-100 placeholder:text-gray-500 w-full;
+}
+
+.app-label {
+  @apply md:text-xl;
 }
 
 .priority-input {

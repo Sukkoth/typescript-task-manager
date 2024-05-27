@@ -108,7 +108,7 @@ function NewProject(props: { editableProjectId?: string }) {
         onSubmit={handleSubmit(onSubmitHandler)}
       >
         <div className='flex flex-col'>
-          <label htmlFor='name' className='text-xl'>
+          <label htmlFor='name' className='app-label'>
             Name
           </label>
           <input
@@ -124,7 +124,7 @@ function NewProject(props: { editableProjectId?: string }) {
           )}
         </div>
         <div className='flex flex-col'>
-          <label htmlFor='description' className='text-xl'>
+          <label htmlFor='description' className='app-label'>
             Description
           </label>
           <textarea
@@ -140,7 +140,7 @@ function NewProject(props: { editableProjectId?: string }) {
           )}
         </div>
         <div className='flex flex-col'>
-          <label htmlFor='deadline' className='text-xl'>
+          <label htmlFor='deadline' className='app-label'>
             Deadline
           </label>
           <input
@@ -163,7 +163,7 @@ function NewProject(props: { editableProjectId?: string }) {
         </div>
         <div className='flex gap-10'>
           <div className='flex flex-col'>
-            <label htmlFor='color' className='text-xl'>
+            <label htmlFor='color' className='app-label'>
               Color
             </label>
             <input
@@ -180,7 +180,7 @@ function NewProject(props: { editableProjectId?: string }) {
           </div>
 
           <div className='flex flex-col'>
-            <label htmlFor='color' className='text-xl'>
+            <label htmlFor='color' className='app-label'>
               Emoji
             </label>
             <input

@@ -50,7 +50,7 @@ function NewTask() {
         >
           cancel
         </p>
-        <h3 className='text-xl'>New Task</h3>
+        <h3 className='text-lg md:text-xl'>New Task</h3>
         <div></div>
       </div>
       <form
@@ -58,7 +58,7 @@ function NewTask() {
         onSubmit={handleSubmit(onSubmitHandler)}
       >
         <div className='flex flex-col'>
-          <label htmlFor='title' className='text-xl'>
+          <label htmlFor='title' className='app-label'>
             Title
           </label>
           <input
@@ -75,7 +75,7 @@ function NewTask() {
           )}
         </div>
         <div className='flex flex-col'>
-          <label htmlFor='description' className='text-xl'>
+          <label htmlFor='description' className='app-label'>
             Description
           </label>
           <textarea
@@ -90,9 +90,9 @@ function NewTask() {
             </p>
           )}
         </div>
-        <div className='grid grid-cols-2 gap-5 w-full mx-auto'>
+        <div className='grid sm:grid-cols-2 gap-5 w-full mx-auto'>
           <div className='flex flex-col'>
-            <label htmlFor='deadline' className='text-xl'>
+            <label htmlFor='deadline' className='app-label'>
               Deadline
             </label>
             <input
@@ -109,7 +109,7 @@ function NewTask() {
             )}
           </div>
           <div className='flex flex-col'>
-            <label htmlFor='duration' className='text-xl'>
+            <label htmlFor='duration' className='app-label'>
               Estimate Task (hrs)
             </label>
             <input
@@ -140,7 +140,7 @@ function NewTask() {
           </p>
         )}
         <div className='flex flex-col'>
-          <label htmlFor='project' className='text-xl'>
+          <label htmlFor='project' className='app-label'>
             Project
           </label>
           <select

@@ -33,7 +33,7 @@ function Deadlines() {
 
   return (
     <div className='mt-5 mb-32'>
-      <h3 className='ml-4 mt-10 text-xl font-medium relative before:absolute before:content-[" "] before:size-2 before:bg-orange-500 before:rounded-full before:top-1/2 before:-left-4 before:-translate-y-1/2'>
+      <h3 className='ml-4 mt-10 text-lg md:text-xl font-medium relative before:absolute before:content-[" "] before:size-2 before:bg-orange-500 before:rounded-full before:top-1/2 before:-left-4 before:-translate-y-1/2'>
         Deadlines
       </h3>
 

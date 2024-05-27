@@ -20,7 +20,7 @@ function PriorityInput({ value = TaskPriority.low, onChange }: Props) {
   }
   return (
     <div>
-      <p className='text-xl'>Priority</p>
+      <p className='app-label'>Priority</p>
       <div className='priority-input text-white'>
         <div
           className={`item ${TaskPriority.low === value ? "active" : ""}`}
